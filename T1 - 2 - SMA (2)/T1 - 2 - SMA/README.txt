@@ -14,7 +14,7 @@ Para executar: Ir até o diretório correto.
 ============   QUEUEING NETWORK SIMULATOR   ============
 ===================    ====================
 ==================    (Novembro 2023)    ===================
-================    Flávia Webster e Arthur Zanella   =================
+================    Flávia Webster =================
 =========================================================
 Simulation: #1
 ...simulating with random numbers (seed '1')...
