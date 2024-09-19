@@ -23,7 +23,7 @@ class SimuladorTandem:
                 self.processar_evento(self.fila2, proximo_evento_fila2)
             self.eventos_processados += 1
             if self.fila1.clientes < self.fila1.capacidade:
-                novo_tempo_chegada = self.tempo_atual + random.uniform(1, 3)
+                novo_tempo_chegada = self.tempo_atual + random.uniform(1.4, 3.4)
                 self.fila1.agendar_evento('chegada', novo_tempo_chegada)
 
     def processar_evento(self, fila, evento):
@@ -52,8 +52,8 @@ class SimuladorTandem:
         print("\n=========================================================")
         print("======================    REPORT   ======================")
         print("=========================================================")
-        self.imprimir_secao_fila(self.fila1, "Q1 (G/G/1)", "Arrival: 1.0 ... 4.0", "Service: 1.0 ... 1.5")
-        self.imprimir_secao_fila(self.fila2, "Q2 (G/G/3/5)", "", "Service: 5.0 ... 10.0")
+        self.imprimir_secao_fila(self.fila1, "Q1 (G/G/2/3)", "Arrival: 1.4 ... 3.4", "Service: 3.4 ... 4.0")
+        self.imprimir_secao_fila(self.fila2, "Q2 (G/G/1/5)", "", "Service: 2.0 ... 3.0")
         print("=========================================================")
         print(f"Simulation average time: {self.calcular_tempo_medio():.4f}")
         print("=========================================================")
@@ -96,3 +96,15 @@ class SimuladorTandem:
         print(f"Média Total de Todas as Filas: {media_total:.4f}")
         print("=========================================================")
 
+    def imprimir_perdas(self):
+        print("\n=========================================================")
+        print("Perdas de Clientes por Fila:")
+        print(f"Perdas na Fila 1: {self.fila1.perdas}")
+        print(f"Perdas na Fila 2: {self.fila2.perdas}")
+        print("=========================================================")
+
+    def imprimir_tempo_global(self):
+        print("\n=========================================================")
+        tempo_global = sum(self.fila1.tempo_estado) + sum(self.fila2.tempo_estado)
+        print(f"Tempo Global da Simulação: {tempo_global:.4f}")
+        print("=========================================================")
